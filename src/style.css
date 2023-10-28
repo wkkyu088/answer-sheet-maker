@@ -17,6 +17,11 @@ body {
   color: #111111;
 }
 
+@media screen and (max-width: 1440px) {
+  html {
+    font-size: 50%;
+  }
+}
 .content-box {
   width: 18rem;
   padding: 3rem;

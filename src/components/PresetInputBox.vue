@@ -1,33 +1,77 @@
 <template>
   <div class="content-box">
-    <div class="sub-title">
-      문제 수
-      <div class="sub-underline"></div>
-    </div>
+    <SubTitle text="문제 수" />
     <div class="input-container">
-      <input type="number" placeholder="50" min="1" max="100" />
+      <input
+        v-model="questions"
+        type="number"
+        placeholder="50"
+        min="1"
+        max="50"
+      />
       문제
-      <span class="text-secondary">(1~100)</span>
+      <span class="text-secondary">(1~50)</span>
     </div>
-    <div class="sub-title">
-      선지 수
-      <div class="sub-underline"></div>
-    </div>
+    <SubTitle text="선지 수" />
     <div class="radio-container">
       <label class="radio-label">
-        <input type="radio" name="choice" value="4" checked />
-        <span>4지선다</span>
-      </label>
-      <label class="radio-label">
-        <input type="radio" name="choice" value="5" />
+        <input v-model="answers" type="radio" name="choice" value="5" checked />
         <span>5지선다</span>
       </label>
+      <label class="radio-label">
+        <input v-model="answers" type="radio" name="choice" value="4" />
+        <span>4지선다</span>
+      </label>
     </div>
-    <button>만들기 !</button>
+    <button
+      class="primary-btn"
+      :disabled="questions === ''"
+      @click="onClickBtn"
+    >
+      만들기 !
+    </button>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue"
+import { useStore } from "@/store/app"
+import { storeToRefs } from "pinia"
+import SubTitle from "@/components/SubTitle.vue"
+
+const store = useStore()
+const { questionCnt, answerCnt, status, selectedAnswers, scoringAnswers } =
+  storeToRefs(store)
+
+const questions = ref("")
+const answers = ref("5")
+
+const setQuestionCnt = () => {
+  questionCnt.value = parseInt(questions.value)
+}
+
+const setAnswerCnt = () => {
+  answerCnt.value = parseInt(answers.value)
+}
+
+const setArray = () => {
+  selectedAnswers.value = Array(questionCnt.value).fill(0)
+  console.log(selectedAnswers.value)
+}
+
+// 만들기 버튼 클릭
+const onClickBtn = () => {
+  if (questions.value > 50) {
+    alert("문제 수는 50개를 넘을 수 없습니다.")
+    return
+  }
+  setQuestionCnt()
+  setAnswerCnt()
+  setArray()
+  status.value = "preset"
+  scoringAnswers.value = null
+}
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/style/color.scss";
@@ -48,6 +92,9 @@ input {
   border-radius: 0.5rem;
   text-align: center;
   font-size: 1.2rem;
+}
+input::placeholder {
+  color: $text-placeholder;
 }
 .text-secondary {
   font-size: 0.8rem;
@@ -81,13 +128,13 @@ input[type="radio"] {
   border-radius: 50%;
   width: 1.5em;
   height: 1.5em;
-  transition: border 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 input[type="radio"]:checked {
-  border: 0.4em solid #f85b5b;
+  border: 0.4em solid $background-primary;
 }
 input[type="radio"]:hover {
-  box-shadow: 0 0 0 max(4px, 0.2em) #dedede;
+  box-shadow: 0 0 0 max(4px, 0.2em) $background-hover;
   cursor: pointer;
 }
 input[type="radio"]:hover + span {

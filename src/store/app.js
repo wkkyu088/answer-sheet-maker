@@ -12,6 +12,7 @@ export const useStore = defineStore("app", () => {
 
   const selectedAnswers = ref(null)
   const scoringAnswers = ref(null)
+  const scoringAnswerList = ref(null)
 
   const result = ref(0)
 
@@ -21,6 +22,7 @@ export const useStore = defineStore("app", () => {
     status,
     selectedAnswers,
     scoringAnswers,
+    scoringAnswerList,
     result,
   }
 })

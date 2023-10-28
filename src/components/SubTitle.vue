@@ -1,35 +1,39 @@
 <template>
-  <div class="title">
-    답안지 생성기 💯
-    <div class="underline"></div>
+  <div class="sub-title">
+    {{ text }}
+    <div class="sub-underline"></div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { toRefs } from "vue"
+
+const props = defineProps(["text"])
+const { text } = toRefs(props)
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/style/color.scss";
-.title {
+.sub-title {
   position: relative;
   width: fit-content;
-  height: 3rem;
+  height: 2rem;
   margin: 0 auto;
-  margin-top: 8rem;
+  margin-bottom: 1.5rem;
   padding: 0 0.5rem;
-  font-size: 2.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   text-align: center;
-  color: $text-primary;
 }
-.underline {
+.sub-underline {
   position: absolute;
-  top: 2.2rem;
+  top: 1rem;
   left: 0;
   width: 100%;
-  height: 1.2rem;
+  height: 0.8rem;
   transform: skew(-20deg);
   background-color: $background-primary;
-  opacity: 0.25;
+  opacity: 0.24;
   z-index: -99;
 }
 </style>

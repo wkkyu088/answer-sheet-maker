@@ -1,9 +1,6 @@
 <template>
   <div class="content-box">
-    <div class="sub-title">
-      간단한 사용법 ☆
-      <div class="sub-underline"></div>
-    </div>
+    <SubTitle text="만들기 가이드 ☆" />
     <div class="guide-item">
       1. <span class="text-deco">문제 수</span>를 입력해 주세요.
     </div>
@@ -16,26 +13,12 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import SubTitle from "@/components/SubTitle.vue"
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/style/color.scss";
-.sub-title {
-  width: fit-content;
-  margin: 0 auto;
-  margin-bottom: 1.5rem;
-  padding: 0 1rem;
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-align: center;
-}
-.sub-underline {
-  margin-top: -0.6rem;
-  width: 100%;
-  height: 0.8rem;
-  transform: skew(-20deg);
-  background-color: #f85b5b33;
-}
 .guide-item {
   width: 15rem;
   margin: 1.4rem auto;

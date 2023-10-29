@@ -1,15 +1,7 @@
 <template>
-  <div
-    class="answer-box"
-    :style="{
-      width: isEmpty ? '102rem' : 'fit-content',
-      height: isEmpty ? '50rem' : 'fit-content',
-    }"
-  >
-    <div v-if="isEmpty" class="empty-sheet">
-      만들기 버튼을 눌러<br />답안지를 생성해주세요 :)
-    </div>
-    <div v-if="!isEmpty" class="answer-sheet">
+  <EmptySheet v-if="isEmpty" />
+  <div v-if="!isEmpty" class="answer-box">
+    <div class="answer-sheet">
       <div v-for="i in questionCnt" :key="i" class="answer-row">
         <div class="row">
           <div class="check-mark" v-if="isCorrect(i - 1)">⭕</div>
@@ -34,8 +26,10 @@
 
 <script setup>
 import { computed } from "vue"
+
 import { useStore } from "@/store/app"
 import { storeToRefs } from "pinia"
+import EmptySheet from "./EmptySheet.vue"
 
 const store = useStore()
 const { questionCnt, answerCnt, status, selectedAnswers, scoringAnswerList } =
@@ -86,6 +80,8 @@ const isRemark = (i, j) => {
 <style lang="scss" scoped>
 @import "@/assets/style/color.scss";
 .answer-box {
+  width: fit-content;
+  height: fit-content;
   align-items: center;
   justify-content: center;
   border: 1px solid $border-light;
@@ -193,16 +189,19 @@ const isRemark = (i, j) => {
 .check-mark {
   font-size: 1.4rem;
 }
-.empty-sheet {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 2rem;
-  text-align: center;
-  color: $text-secondary;
+@media screen and (max-width: 768px) {
+  .answer-box {
+    width: 70vw;
+    height: fit-content;
+    padding: 2rem;
+  }
+  .answer-sheet {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 1rem 2rem;
+  }
 }
 </style>

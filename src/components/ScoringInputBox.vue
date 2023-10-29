@@ -50,4 +50,16 @@ const isDisabled = computed(() => {
   font-weight: 400;
   color: $text-secondary;
 }
+@media screen and (max-width: 1440px) {
+  .answer-box {
+    width: 20rem;
+    height: 15rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .answer-box {
+    width: 70vw;
+    height: 10rem;
+  }
+}
 </style>

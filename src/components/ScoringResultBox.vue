@@ -67,4 +67,18 @@ const isEmpty = computed(() => {
   color: $text-secondary;
   padding: 1.5rem 0;
 }
+@media screen and (max-width: 1440px) {
+  .content-box {
+    width: 15rem;
+    height: 15rem;
+    padding: 2rem 4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content-box {
+    width: 70vw;
+    height: fit-content;
+    padding: 2rem;
+  }
+}
 </style>

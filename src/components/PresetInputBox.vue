@@ -1,27 +1,39 @@
 <template>
   <div class="content-box">
-    <SubTitle text="문제 수" />
-    <div class="input-container">
-      <input
-        v-model="questions"
-        type="number"
-        placeholder="50"
-        min="1"
-        max="50"
-      />
-      문제
-      <span class="text-secondary">(1~50)</span>
-    </div>
-    <SubTitle text="선지 수" />
-    <div class="radio-container">
-      <label class="radio-label">
-        <input v-model="answers" type="radio" name="choice" value="5" checked />
-        <span>5지선다</span>
-      </label>
-      <label class="radio-label">
-        <input v-model="answers" type="radio" name="choice" value="4" />
-        <span>4지선다</span>
-      </label>
+    <div class="row">
+      <div>
+        <SubTitle text="문제 수" />
+        <div class="input-container">
+          <input
+            v-model="questions"
+            type="number"
+            placeholder="50"
+            min="1"
+            max="50"
+          />
+          문제
+          <span class="text-secondary">(1~50)</span>
+        </div>
+      </div>
+      <div>
+        <SubTitle text="선지 수" />
+        <div class="radio-container">
+          <label class="radio-label">
+            <input
+              v-model="answers"
+              type="radio"
+              name="choice"
+              value="5"
+              checked
+            />
+            <span>5지선다</span>
+          </label>
+          <label class="radio-label">
+            <input v-model="answers" type="radio" name="choice" value="4" />
+            <span>4지선다</span>
+          </label>
+        </div>
+      </div>
     </div>
     <button
       class="primary-btn"
@@ -97,7 +109,7 @@ input::placeholder {
   color: $text-placeholder;
 }
 .text-secondary {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 400;
   color: $text-secondary;
   margin-left: 0.3rem;
@@ -139,5 +151,29 @@ input[type="radio"]:hover {
 }
 input[type="radio"]:hover + span {
   cursor: pointer;
+}
+@media screen and (max-width: 1440px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+  }
+  .content-box {
+    width: fit-content;
+    height: 15rem;
+    padding: 2rem 4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+  }
+  .content-box {
+    width: 70vw;
+    height: fit-content;
+    padding: 2rem;
+  }
 }
 </style>

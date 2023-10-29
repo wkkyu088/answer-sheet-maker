@@ -6,7 +6,7 @@
         <PresetGuideBox />
         <PresetInputBox />
       </div>
-      <div class="column-container">
+      <div class="column">
         <AnswerSheet />
         <SubmitButton />
       </div>
@@ -32,23 +32,4 @@ import SubmitButton from "@/components/SubmitButton.vue"
 
 <style lang="scss" scoped>
 @import "@/assets/style/color.scss";
-.container {
-  width: 100%;
-  height: 100%;
-  margin: 5rem auto;
-}
-.row-container {
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: center;
-  gap: 1rem;
-}
-.column-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
 </style>

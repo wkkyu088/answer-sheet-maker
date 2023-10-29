@@ -21,7 +21,7 @@ import SubTitle from "@/components/SubTitle.vue"
 @import "@/assets/style/color.scss";
 .guide-item {
   width: 15rem;
-  margin: 1.4rem auto;
+  margin: 0.8rem auto;
   font-size: 1.2rem;
   font-weight: 400;
 }
@@ -32,11 +32,24 @@ import SubTitle from "@/components/SubTitle.vue"
 }
 .content-box {
   width: 18rem;
-  margin: 0 auto;
   padding: 3rem;
   align-items: center;
   justify-content: center;
   border: 1px solid $border-light;
   border-radius: 1rem;
+}
+@media screen and (max-width: 1440px) {
+  .content-box {
+    width: fit-content;
+    height: 15rem;
+    padding: 2rem 4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content-box {
+    width: 70vw;
+    height: fit-content;
+    padding: 2rem;
+  }
 }
 </style>

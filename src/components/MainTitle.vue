@@ -32,4 +32,15 @@
   opacity: 0.25;
   z-index: -99;
 }
+@media screen and (max-width: 1440px) {
+  .title {
+    margin-top: 5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    margin-top: 4rem;
+  }
+}
 </style>

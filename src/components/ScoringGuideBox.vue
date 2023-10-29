@@ -32,4 +32,18 @@ import SubTitle from "@/components/SubTitle.vue"
   text-decoration: underline;
   text-underline-position: under;
 }
+@media screen and (max-width: 1440px) {
+  .content-box {
+    width: 20rem;
+    height: 15rem;
+    padding: 2rem 4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content-box {
+    width: 70vw;
+    height: fit-content;
+    padding: 2rem;
+  }
+}
 </style>
